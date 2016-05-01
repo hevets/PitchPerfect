@@ -55,6 +55,8 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAudio()
+        
+        setupNavBar()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,15 +68,12 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func setupNavBar() {
+        let audioPlayer = try? AVAudioPlayer(contentsOfURL: self.audioFile.url)
+        // set the duration of the audiofile
+        if let duration = audioPlayer?.duration {
+            self.navigationItem.title = String(format: "%.0f seconds", duration)
+        }
+    }
     
 }
