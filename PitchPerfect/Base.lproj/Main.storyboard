@@ -186,8 +186,9 @@
         <!--Navigation Controller-->
         <scene sceneID="elf-Pb-pNn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u26-bu-K1D" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="u26-bu-K1D" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Qg-tY-wtY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

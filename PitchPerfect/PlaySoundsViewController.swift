@@ -26,6 +26,23 @@ class PlaySoundsViewController: UIViewController {
     
     enum ButtonType: Int { case Slow = 0, Fast, Chipmunk, Vader, Echo, Reverb }
     
+    var recordedAudioURL: NSURL!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupAudio()
+        setupNavBar()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        configureUI(.NotPlaying)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     @IBAction func playSoundForButton(sender: UIButton) {
         switch ButtonType(rawValue: sender.tag)! {
         case .Slow:
@@ -50,25 +67,9 @@ class PlaySoundsViewController: UIViewController {
         stopAudio()
     }
     
-    var recordedAudioURL: NSURL!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupAudio()
-        
-        setupNavBar()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        configureUI(.NotPlaying)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func setupNavBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
         let audioPlayer = try? AVAudioPlayer(contentsOfURL: self.audioFile.url)
         // set the duration of the audiofile
         if let duration = audioPlayer?.duration {
